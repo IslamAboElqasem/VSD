@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:vigilsafedriversystem/Features/Welcome/presentation/views/welcome_view.dart';
 
 class SplashViewBody extends StatefulWidget {
   const SplashViewBody({super.key});
@@ -32,9 +33,8 @@ class _SplashViewBodyState extends State<SplashViewBody>
       mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        Image.asset('assets/logo.png'),
-        const SizedBox(
-          height: 5,
+        Image.asset(
+          'assets/logo.png',
         ),
       ],
     );
@@ -56,7 +56,7 @@ class _SplashViewBodyState extends State<SplashViewBody>
         Navigator.pushReplacement(
             context,
             MaterialPageRoute(
-              builder: (context) => WelcomeView(),
+              builder: (context) => const WelcomeView(),
             ));
       },
     );
