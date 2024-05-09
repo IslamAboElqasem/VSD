@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:vigilsafedriversystem/Features/Sign_In/presentation/views/sign_in_view.dart';
 
 class WelcomeViewBody extends StatelessWidget {
   const WelcomeViewBody({super.key});
@@ -28,7 +29,13 @@ class WelcomeViewBody extends StatelessWidget {
               width: 230,
               height: 50,
               child: ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const SignInView(),
+                      ));
+                },
                 style: ElevatedButton.styleFrom(
                   foregroundColor: Colors.black,
                   backgroundColor: Colors.blue,
