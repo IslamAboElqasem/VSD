@@ -29,14 +29,11 @@ class SignInViewBody extends StatelessWidget {
                     controller: password,
                   ),
                   const SizedBox(height: 20),
-                  GestureDetector(
-                    onTap: () {},
-                    child: const Align(
-                      alignment: Alignment.centerRight,
-                      child: Text(
-                        'Forgot your password?',
-                        style: TextStyle(color: Colors.blue),
-                      ),
+                  const Align(
+                    alignment: Alignment.centerRight,
+                    child: Text(
+                      'Forgot your password?',
+                      style: TextStyle(color: Colors.blue),
                     ),
                   ),
                   const SizedBox(height: 20),
