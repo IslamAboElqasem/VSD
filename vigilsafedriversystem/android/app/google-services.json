@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "966340789802",
+    "project_id": "vigilsafedriversystem-ff2e1",
+    "storage_bucket": "vigilsafedriversystem-ff2e1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:966340789802:android:e68b7bf69c3fe8774a2553",
+        "android_client_info": {
+          "package_name": "com.example.vigilsafedriversystem"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAh869e5cSfYW1U9WvhU82IU3aU12tpDdU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
