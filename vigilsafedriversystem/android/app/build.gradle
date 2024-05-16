@@ -26,9 +26,8 @@ if (flutterVersionName == null) {
 }
 
 android {
-    compileSdkVersion 33
+    compileSdkVersion 34
     namespace "com.example.vigilsafedriversystem"
-    compileSdkVersion flutter.compileSdkVersion
     ndkVersion flutter.ndkVersion
 
     compileOptions {
