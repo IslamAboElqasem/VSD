@@ -9,12 +9,12 @@ part 'sign_up_state.dart';
 class SignUpCubit extends Cubit<SignUpState> {
   SignUpCubit() : super(SignUpInitial());
 
-  Future signUp(UserDetails userDetails, BuildContext context) async {
+  Future signUp(
+      UserDetails userDetails, String password, BuildContext context) async {
     emit(SignUpLoading());
     await FirebaseAuth.instance
         .createUserWithEmailAndPassword(
-            email: userDetails.email!.trim(),
-            password: userDetails.password!.trim())
+            email: userDetails.email!.trim(), password: password)
         .then((val) {
       if (val.user != null) {
         FirebaseFirestore.instance

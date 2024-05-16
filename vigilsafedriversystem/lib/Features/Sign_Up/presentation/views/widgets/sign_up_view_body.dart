@@ -170,11 +170,11 @@ class _SignUpViewBodyState extends State<SignUpViewBody> {
                         BlocProvider.of<SignUpCubit>(context).signUp(
                             UserDetails(
                                 email: _emailController.text,
-                                password: _passwordController.text,
                                 firstName: _firstNameController.text,
                                 lastName: _lastNameController.text,
                                 nationalID: _nationalIDController.text,
                                 phoneNumber: _phoneNumberController.text),
+                            _passwordController.text,
                             context);
                       },
                       style: ElevatedButton.styleFrom(
