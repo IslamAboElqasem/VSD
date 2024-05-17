@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:vigilsafedriversystem/Features/Sign_In/presentation/views/forget_password_view.dart';
 
 class SignInViewBody extends StatelessWidget {
   SignInViewBody({super.key});
@@ -37,11 +38,20 @@ class SignInViewBody extends StatelessWidget {
                     controller: password,
                   ),
                   const SizedBox(height: 20),
-                  const Align(
-                    alignment: Alignment.centerRight,
-                    child: Text(
-                      'Forgot your password?',
-                      style: TextStyle(color: Colors.blue),
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const ForgetPasswordView(),
+                          ));
+                    },
+                    child: const Align(
+                      alignment: Alignment.centerRight,
+                      child: Text(
+                        'Forgot your password?',
+                        style: TextStyle(color: Colors.blue),
+                      ),
                     ),
                   ),
                   const SizedBox(height: 20),

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:vigilsafedriversystem/Features/Sign_In/presentation/views/sign_in_view.dart';
 import 'package:vigilsafedriversystem/Features/Sign_Up/presentation/view_model/sign_up_cubit/sign_up_cubit.dart';
-import 'package:vigilsafedriversystem/Features/Sign_Up/presentation/view_model/user_model/user_info.dart';
+import 'package:vigilsafedriversystem/core/models/user_model/user_info.dart';
 import 'package:vigilsafedriversystem/core/widgets/show_toast.dart';
 
 class SignUpViewBody extends StatefulWidget {

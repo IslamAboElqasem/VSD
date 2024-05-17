@@ -2,7 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:vigilsafedriversystem/Features/Sign_Up/presentation/view_model/user_model/user_info.dart';
+import 'package:vigilsafedriversystem/core/models/user_model/user_info.dart';
 
 part 'sign_up_state.dart';
 
