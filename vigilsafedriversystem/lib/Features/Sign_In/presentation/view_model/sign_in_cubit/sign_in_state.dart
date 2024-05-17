@@ -9,6 +9,8 @@ class SignInLoading extends SignInState {}
 
 class SignInSuccess extends SignInState {}
 
+class SignInNotVerified extends SignInState {}
+
 class SignInFailure extends SignInState {
   final String errorMessage;
 

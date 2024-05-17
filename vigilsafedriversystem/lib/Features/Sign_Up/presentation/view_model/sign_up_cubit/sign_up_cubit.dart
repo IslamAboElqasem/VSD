@@ -9,7 +9,7 @@ part 'sign_up_state.dart';
 class SignUpCubit extends Cubit<SignUpState> {
   SignUpCubit() : super(SignUpInitial());
 
-  Future signUp(
+  Future registration(
       UserDetails userDetails, String password, BuildContext context) async {
     emit(SignUpLoading());
     await FirebaseAuth.instance

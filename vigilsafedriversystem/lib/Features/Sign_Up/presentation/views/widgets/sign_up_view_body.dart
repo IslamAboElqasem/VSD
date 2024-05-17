@@ -167,7 +167,7 @@ class _SignUpViewBodyState extends State<SignUpViewBody> {
                               Colors.redAccent);
                           return;
                         }
-                        BlocProvider.of<SignUpCubit>(context).signUp(
+                        BlocProvider.of<SignUpCubit>(context).registration(
                             UserDetails(
                                 email: _emailController.text,
                                 firstName: _firstNameController.text,
