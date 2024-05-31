@@ -11,7 +11,7 @@ class TrackerOrDriverView extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             SizedBox(
-              width: 230,
+              width: 260,
               height: 50,
               child: ElevatedButton(
                 onPressed: () {},
@@ -23,9 +23,16 @@ class TrackerOrDriverView extends StatelessWidget {
                 child: const Text('Tracker'),
               ),
             ),
-            const SizedBox(height: 25),
+            const SizedBox(height: 5),
+            const Text('or',
+                style: TextStyle(
+                    fontFamily: 'pacifico',
+                    fontSize: 30,
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold)),
+            const SizedBox(height: 5),
             SizedBox(
-              width: 230,
+              width: 260,
               height: 50,
               child: ElevatedButton(
                 onPressed: () {},

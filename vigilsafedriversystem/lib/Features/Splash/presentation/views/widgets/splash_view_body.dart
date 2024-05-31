@@ -29,7 +29,8 @@ class _SplashViewBodyState extends State<SplashViewBody>
 
   @override
   Widget build(BuildContext context) {
-    return Column(
+    return Scaffold(
+        body: Column(
       mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
@@ -37,7 +38,7 @@ class _SplashViewBodyState extends State<SplashViewBody>
           'assets/logo.png',
         ),
       ],
-    );
+    ));
   }
 
   void initSlidingAnimation() {
