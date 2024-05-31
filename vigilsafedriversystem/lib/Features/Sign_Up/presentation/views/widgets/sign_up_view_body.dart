@@ -45,7 +45,7 @@ class _SignUpViewBodyState extends State<SignUpViewBody> {
         return Scaffold(
           appBar: AppBar(
             backgroundColor: const Color(0xFF1589FF),
-            title: const Text('Sign In'),
+            title: const Text('Sign Up'),
           ),
           body: SingleChildScrollView(
             child: Padding(
