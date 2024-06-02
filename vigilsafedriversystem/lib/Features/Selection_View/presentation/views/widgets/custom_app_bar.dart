@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:vigilsafedriversystem/constant.dart';
+// import 'package:vigilsafedriversystem/constant.dart';
 
 class CustomAppBar extends StatelessWidget {
   const CustomAppBar({super.key});
@@ -21,10 +21,10 @@ class CustomAppBar extends StatelessWidget {
           ),
         ),
         const Spacer(),
-        Image.asset(
-          logo,
-          height: 80,
-        ),
+        // Image.asset(
+        //   logo,
+        //   height: 80,
+        // ),
       ],
     );
   }
