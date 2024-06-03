@@ -18,7 +18,7 @@ class _ForgetPasswordViewBodyState extends State<ForgetPasswordViewBody> {
       body: Stack(children: [
         Positioned.fill(
           child: Opacity(
-            opacity: 0.2,
+            opacity: 0.3,
             child: Image.asset(
               'assets/cars_background.jpeg', // Background pattern image
               fit: BoxFit.cover,

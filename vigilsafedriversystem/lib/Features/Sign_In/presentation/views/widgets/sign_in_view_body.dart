@@ -14,7 +14,7 @@ class SignInViewBody extends StatelessWidget {
         body: Stack(children: [
       Positioned.fill(
         child: Opacity(
-          opacity: 0.2,
+          opacity: 0.3,
           child: Image.asset(
             'assets/cars_background.jpeg', // Background pattern image
             fit: BoxFit.cover,
@@ -69,7 +69,7 @@ class SignInViewBody extends StatelessWidget {
                 alignment: Alignment.centerRight,
                 child: Text(
                   'Forgot your password?',
-                  style: TextStyle(color: Colors.blue),
+                  style: TextStyle(color: Colors.black),
                 ),
               ),
             ),
