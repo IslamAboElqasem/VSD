@@ -18,7 +18,7 @@ Widget userDrawer(BuildContext context) {
               ),
               SizedBox(height: 10),
               Text(
-                'Islam Hesham',
+                'User Name',
                 style: TextStyle(
                   color: Colors.white,
                   fontSize: 20,

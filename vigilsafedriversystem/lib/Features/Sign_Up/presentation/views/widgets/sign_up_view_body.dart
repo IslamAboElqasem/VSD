@@ -62,7 +62,7 @@ class _SignUpViewBodyState extends State<SignUpViewBody> {
                     const SizedBox(
                       height: 50,
                     ),
-                    const Text('Sign In',
+                    const Text('Sign Up',
                         textAlign: TextAlign.center,
                         style: TextStyle(
                             color: Colors.white,
