@@ -9,7 +9,8 @@ void showToast(BuildContext context, String txt, Color color) {
         txt,
         style: const TextStyle(fontSize: 18),
       ),
-      //action: SnackBarAction(label: 'UNDO', onPressed: scaffold.hideCurrentSnackBar),
+      action: SnackBarAction(
+          label: 'UNDO', onPressed: scaffold.hideCurrentSnackBar),
     ),
   );
 }

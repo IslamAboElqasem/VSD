@@ -3,33 +3,29 @@ import 'package:vigilsafedriversystem/Features/Selection_View/presentation/views
 import 'package:vigilsafedriversystem/Features/Selection_View/presentation/views/widgets/custom_app_bar.dart';
 import 'package:vigilsafedriversystem/Features/Selection_View/presentation/views/widgets/user_drawer.dart';
 import 'package:vigilsafedriversystem/constant.dart';
+import 'package:vigilsafedriversystem/core/models/user_model/user_detail.dart';
 
 class SelectionViewBody extends StatelessWidget {
-  const SelectionViewBody({super.key});
+  const SelectionViewBody({super.key, required this.userDetails});
+  final UserDetails? userDetails;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: userDrawer(context),
-      body: Container(
-        decoration: const BoxDecoration(
-          gradient: LinearGradient(
-            colors: [Color(0xFF2196F3), Color.fromARGB(255, 33, 68, 243)],
-            begin: Alignment.topLeft,
-            end: Alignment.bottomRight,
-          ),
+      drawer: userDrawer(
+          context,
+          userDetails!.firstName.toString(),
+          userDetails!.lastName.toString(),
+          userDetails!.phoneNumber.toString()),
+      body: Stack(children: [
+        Image.asset(
+          'assets/back_ground.jpeg', // Background pattern image
+          opacity: const AlwaysStoppedAnimation(.1),
+          fit: BoxFit.cover,
+          height: double.infinity,
         ),
-        child: Stack(children: [
-          Positioned.fill(
-            child: Opacity(
-              opacity: 0.2,
-              child: Image.asset(
-                'assets/back_ground.jpeg', // Background pattern image
-                fit: BoxFit.cover,
-              ),
-            ),
-          ),
-          Padding(
+        SingleChildScrollView(
+          child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -80,8 +76,8 @@ class SelectionViewBody extends StatelessWidget {
               ],
             ),
           ),
-        ]),
-      ),
+        ),
+      ]),
     );
   }
 }
