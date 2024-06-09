@@ -9,18 +9,11 @@ class WelcomeViewBody extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Stack(children: [
-        SizedBox(
+        Image.asset(
+          'assets/cars_background.jpeg', // Background pattern image
+          opacity: const AlwaysStoppedAnimation(.2),
+          fit: BoxFit.cover,
           height: double.infinity,
-          width: double.infinity,
-          child: Positioned.fill(
-            child: Opacity(
-              opacity: 0.3,
-              child: Image.asset(
-                'assets/cars_background.jpeg', // Background pattern image
-                fit: BoxFit.cover,
-              ),
-            ),
-          ),
         ),
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),

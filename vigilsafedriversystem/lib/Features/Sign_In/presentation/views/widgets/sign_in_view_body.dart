@@ -11,90 +11,90 @@ class SignInViewBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: Stack(children: [
-      Positioned.fill(
-        child: Opacity(
-          opacity: 0.3,
-          child: Image.asset(
-            'assets/cars_background.jpeg', // Background pattern image
-            fit: BoxFit.cover,
-          ),
+      body: Stack(children: [
+        Image.asset(
+          'assets/cars_background.jpeg', // Background pattern image
+          opacity: const AlwaysStoppedAnimation(.2),
+          fit: BoxFit.cover,
+          height: double.infinity,
         ),
-      ),
-      Padding(
-          padding: const EdgeInsets.all(10.0),
-          child:
-              Column(crossAxisAlignment: CrossAxisAlignment.center, children: [
-            const SizedBox(
-              height: 100,
-            ),
-            const Text('Sign In',
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                    color: Colors.white,
-                    fontWeight: FontWeight.bold,
-                    fontFamily: 'Pacifico',
-                    fontSize: 30)),
-            const SizedBox(
-              height: 100,
-            ),
-            TextFormField(
-              decoration: const InputDecoration(
-                labelText: 'Email',
-                border: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(10))),
-              ),
-              controller: email,
-            ),
-            const SizedBox(height: 20),
-            TextFormField(
-              decoration: const InputDecoration(
-                labelText: 'Password',
-                border: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(10))),
-              ),
-              obscureText: true,
-              controller: password,
-            ),
-            const SizedBox(height: 20),
-            GestureDetector(
-              onTap: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => const ForgetPasswordView(),
-                    ));
-              },
-              child: const Align(
-                alignment: Alignment.centerRight,
-                child: Text(
-                  'Forgot your password?',
-                  style: TextStyle(color: Colors.black),
-                ),
-              ),
-            ),
-            const SizedBox(height: 20),
-            SizedBox(
-              width: double.infinity,
-              height: 50,
-              child: ElevatedButton(
-                onPressed: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => const SelectionViewBody(),
-                      ));
-                },
-                style: ElevatedButton.styleFrom(
-                  foregroundColor: Colors.black,
-                  backgroundColor: Colors.blue,
-                  shape: const RoundedRectangleBorder(
-                      borderRadius: BorderRadius.all(Radius.circular(20))),
-                ),
-                child: const Text('Sign In'),
-              ),
-            )
-          ])),
-    ]));
+        Padding(
+            padding: const EdgeInsets.all(10.0),
+            child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  const SizedBox(
+                    height: 100,
+                  ),
+                  const Text('Sign In',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                          fontFamily: 'Pacifico',
+                          fontSize: 30)),
+                  const SizedBox(
+                    height: 100,
+                  ),
+                  TextFormField(
+                    decoration: const InputDecoration(
+                      labelText: 'Email',
+                      border: OutlineInputBorder(
+                          borderRadius: BorderRadius.all(Radius.circular(10))),
+                    ),
+                    controller: email,
+                  ),
+                  const SizedBox(height: 20),
+                  TextFormField(
+                    decoration: const InputDecoration(
+                      labelText: 'Password',
+                      border: OutlineInputBorder(
+                          borderRadius: BorderRadius.all(Radius.circular(10))),
+                    ),
+                    obscureText: true,
+                    controller: password,
+                  ),
+                  const SizedBox(height: 20),
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const ForgetPasswordView(),
+                          ));
+                    },
+                    child: const Align(
+                      alignment: Alignment.centerRight,
+                      child: Text(
+                        'Forgot your password?',
+                        style: TextStyle(color: Colors.black),
+                      ),
+                    ),
+                  ),
+                  const SizedBox(height: 20),
+                  SizedBox(
+                    width: double.infinity,
+                    height: 50,
+                    child: ElevatedButton(
+                      onPressed: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const SelectionViewBody(),
+                            ));
+                      },
+                      style: ElevatedButton.styleFrom(
+                        foregroundColor: Colors.black,
+                        backgroundColor: Colors.blue,
+                        shape: const RoundedRectangleBorder(
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(20))),
+                      ),
+                      child: const Text('Sign In'),
+                    ),
+                  )
+                ])),
+      ]),
+    );
   }
 }

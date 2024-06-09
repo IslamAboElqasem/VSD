@@ -16,14 +16,11 @@ class _ForgetPasswordViewBodyState extends State<ForgetPasswordViewBody> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Stack(children: [
-        Positioned.fill(
-          child: Opacity(
-            opacity: 0.3,
-            child: Image.asset(
-              'assets/cars_background.jpeg', // Background pattern image
-              fit: BoxFit.cover,
-            ),
-          ),
+        Image.asset(
+          'assets/cars_background.jpeg', // Background pattern image
+          opacity: const AlwaysStoppedAnimation(.2),
+          fit: BoxFit.cover,
+          height: double.infinity,
         ),
         Padding(
           padding: const EdgeInsets.all(10),

@@ -28,30 +28,26 @@ class _SignUpViewBodyState extends State<SignUpViewBody> {
     return BlocConsumer<SignUpCubit, SignUpState>(
       listener: (context, state) async {
         if (state is SignUpLoading) {
-          return showToast(context, 'Wait the Verification', Colors.yellow);
+          showToast(context, 'Wait for the Verification', Colors.yellow);
         } else if (state is SignUpSuccess) {
           Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) => const SignInView(),
-              ));
-          return showToast(
-              context, 'Done Send Email Verification', Colors.lightGreen);
+            context,
+            MaterialPageRoute(builder: (context) => const SignInView()),
+          );
+          showToast(context, 'Done! Check your email for verification.',
+              Colors.lightGreen);
         } else if (state is SignUpFailure) {
-          return showToast(context, state.errorMessage.toString(), Colors.red);
+          showToast(context, state.errorMessage.toString(), Colors.red);
         }
       },
       builder: (context, state) {
         return Scaffold(
           body: Stack(children: [
-            Positioned.fill(
-              child: Opacity(
-                opacity: 0.3,
-                child: Image.asset(
-                  'assets/cars_background.jpeg', // Background pattern image
-                  fit: BoxFit.cover,
-                ),
-              ),
+            Image.asset(
+              'assets/cars_background.jpeg', // Background pattern image
+              opacity: const AlwaysStoppedAnimation(.2),
+              fit: BoxFit.cover,
+              height: double.infinity,
             ),
             SingleChildScrollView(
               child: Padding(
@@ -59,36 +55,37 @@ class _SignUpViewBodyState extends State<SignUpViewBody> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    const SizedBox(
-                      height: 50,
+                    const SizedBox(height: 50),
+                    const Text(
+                      'Sign Up',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                        fontFamily: 'Pacifico',
+                        fontSize: 30,
+                      ),
                     ),
-                    const Text('Sign Up',
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold,
-                            fontFamily: 'Pacifico',
-                            fontSize: 30)),
-                    const SizedBox(
-                      height: 50,
-                    ),
+                    const SizedBox(height: 50),
                     TextFormField(
                       controller: _firstNameController,
+                      textCapitalization: TextCapitalization.words,
                       decoration: const InputDecoration(
                         labelText: 'First Name',
                         border: OutlineInputBorder(
-                            borderRadius:
-                                BorderRadius.all(Radius.circular(10))),
+                          borderRadius: BorderRadius.all(Radius.circular(10)),
+                        ),
                       ),
                     ),
                     const SizedBox(height: 5),
                     TextFormField(
                       controller: _lastNameController,
+                      textCapitalization: TextCapitalization.words,
                       decoration: const InputDecoration(
                         labelText: 'Last Name',
                         border: OutlineInputBorder(
-                            borderRadius:
-                                BorderRadius.all(Radius.circular(10))),
+                          borderRadius: BorderRadius.all(Radius.circular(10)),
+                        ),
                       ),
                     ),
                     const SizedBox(height: 5),
@@ -97,19 +94,20 @@ class _SignUpViewBodyState extends State<SignUpViewBody> {
                       decoration: const InputDecoration(
                         labelText: 'Email',
                         border: OutlineInputBorder(
-                            borderRadius:
-                                BorderRadius.all(Radius.circular(10))),
+                          borderRadius: BorderRadius.all(Radius.circular(10)),
+                        ),
                       ),
+                      keyboardType: TextInputType.emailAddress,
                     ),
                     const SizedBox(height: 5),
                     TextFormField(
                       controller: _phoneNumberController,
-                      keyboardType: TextInputType.number,
+                      keyboardType: TextInputType.phone,
                       decoration: const InputDecoration(
                         labelText: 'Phone Number',
                         border: OutlineInputBorder(
-                            borderRadius:
-                                BorderRadius.all(Radius.circular(10))),
+                          borderRadius: BorderRadius.all(Radius.circular(10)),
+                        ),
                       ),
                     ),
                     const SizedBox(height: 5),
@@ -119,8 +117,8 @@ class _SignUpViewBodyState extends State<SignUpViewBody> {
                       decoration: const InputDecoration(
                         labelText: 'National ID',
                         border: OutlineInputBorder(
-                            borderRadius:
-                                BorderRadius.all(Radius.circular(10))),
+                          borderRadius: BorderRadius.all(Radius.circular(10)),
+                        ),
                       ),
                     ),
                     const SizedBox(height: 5),
@@ -128,45 +126,52 @@ class _SignUpViewBodyState extends State<SignUpViewBody> {
                       children: [
                         const Padding(
                           padding: EdgeInsets.all(15),
-                          child: Text('Gender :'),
+                          child: Text('Gender:'),
                         ),
-                        DropdownButton(
-                          value: selectedValue,
-                          hint: const Text('Select Options'),
-                          icon: const Icon(Icons.arrow_downward),
-                          items: const [
-                            DropdownMenuItem(
-                                value: 'Male', child: Text('Male')),
-                            DropdownMenuItem(
-                                value: 'Female', child: Text('Female')),
-                          ],
-                          onChanged: (value) {
-                            setState(() => selectedValue = value);
-                          },
-                        )
+                        Expanded(
+                          child: DropdownButtonFormField<String>(
+                            value: selectedValue,
+                            hint: const Text('Select Option'),
+                            icon: const Icon(Icons.arrow_downward),
+                            items: const [
+                              DropdownMenuItem(
+                                  value: 'Male', child: Text('Male')),
+                              DropdownMenuItem(
+                                  value: 'Female', child: Text('Female')),
+                            ],
+                            onChanged: (value) {
+                              setState(() => selectedValue = value);
+                            },
+                            decoration: const InputDecoration(
+                              border: OutlineInputBorder(
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(10)),
+                              ),
+                            ),
+                          ),
+                        ),
                       ],
                     ),
-                    const SizedBox(
-                      height: 10,
-                    ),
+                    const SizedBox(height: 10),
                     TextFormField(
                       controller: _passwordController,
                       obscureText: true,
                       decoration: const InputDecoration(
                         labelText: 'Password',
                         border: OutlineInputBorder(
-                            borderRadius:
-                                BorderRadius.all(Radius.circular(10))),
+                          borderRadius: BorderRadius.all(Radius.circular(10)),
+                        ),
                       ),
                     ),
                     const SizedBox(height: 5),
                     TextFormField(
                       controller: _confirmPasswordController,
+                      obscureText: true,
                       decoration: const InputDecoration(
                         labelText: 'Confirm Password',
                         border: OutlineInputBorder(
-                            borderRadius:
-                                BorderRadius.all(Radius.circular(10))),
+                          borderRadius: BorderRadius.all(Radius.circular(10)),
+                        ),
                       ),
                     ),
                     const SizedBox(height: 20),
@@ -188,32 +193,32 @@ class _SignUpViewBodyState extends State<SignUpViewBody> {
                           }
                           if (_passwordController.text !=
                               _confirmPasswordController.text) {
-                            showToast(
-                                context,
-                                'Re-Password doesn\'t match Password!',
+                            showToast(context, 'Passwords do not match!',
                                 Colors.redAccent);
                             return;
                           }
                           BlocProvider.of<SignUpCubit>(context).registration(
-                              UserDetails(
-                                  email: _emailController.text,
-                                  firstName: _firstNameController.text,
-                                  lastName: _lastNameController.text,
-                                  nationalID: _nationalIDController.text,
-                                  phoneNumber: _phoneNumberController.text),
-                              _passwordController.text,
-                              context);
+                            UserDetails(
+                              email: _emailController.text,
+                              firstName: _firstNameController.text,
+                              lastName: _lastNameController.text,
+                              nationalID: _nationalIDController.text,
+                              phoneNumber: _phoneNumberController.text,
+                            ),
+                            _passwordController.text,
+                            context,
+                          );
                         },
                         style: ElevatedButton.styleFrom(
                           foregroundColor: Colors.black,
                           backgroundColor: Colors.blue,
                           shape: const RoundedRectangleBorder(
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(20))),
+                            borderRadius: BorderRadius.all(Radius.circular(20)),
+                          ),
                         ),
                         child: const Text('Sign Up'),
                       ),
-                    )
+                    ),
                   ],
                 ),
               ),
