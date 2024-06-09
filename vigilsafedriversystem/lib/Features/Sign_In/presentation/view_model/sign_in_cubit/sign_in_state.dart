@@ -7,9 +7,11 @@ final class SignInInitial extends SignInState {}
 
 class SignInLoading extends SignInState {}
 
-class SignInSuccess extends SignInState {}
+class SignInSuccess extends SignInState {
+  final UserDetails userDetails;
 
-class SignInNotVerified extends SignInState {}
+  SignInSuccess({required this.userDetails});
+}
 
 class SignInFailure extends SignInState {
   final String errorMessage;
