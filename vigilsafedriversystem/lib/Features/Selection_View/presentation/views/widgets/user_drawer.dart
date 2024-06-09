@@ -51,12 +51,12 @@ Widget userDrawer(
           title: const Text('Log Out'),
           onTap: () {
             Navigator.pushReplacement(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => const WelcomeView(),
-                  )
-            );
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const WelcomeView(),
+                ));
           },
+        )
       ],
     ),
   );
