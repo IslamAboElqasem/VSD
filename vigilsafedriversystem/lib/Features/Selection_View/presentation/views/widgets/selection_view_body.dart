@@ -18,11 +18,15 @@ class SelectionViewBody extends StatelessWidget {
           userDetails!.lastName.toString(),
           userDetails!.phoneNumber.toString()),
       body: Stack(children: [
-        Image.asset(
-          'assets/back_ground.jpeg', // Background pattern image
-          opacity: const AlwaysStoppedAnimation(.1),
-          fit: BoxFit.cover,
+        SizedBox(
           height: double.infinity,
+          child: Positioned.fill(
+            child: Image.asset(
+              'assets/back_ground.jpeg', // Background pattern image
+              opacity: const AlwaysStoppedAnimation(.2),
+              fit: BoxFit.cover,
+            ),
+          ),
         ),
         SingleChildScrollView(
           child: Padding(
@@ -30,6 +34,9 @@ class SelectionViewBody extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+                const SizedBox(
+                  height: 20,
+                ),
                 const CustomAppBar(),
                 const SizedBox(
                   height: 100,
