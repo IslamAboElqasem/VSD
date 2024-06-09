@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
+
 class DriverViewBody extends StatefulWidget {
   const DriverViewBody({super.key});
 
@@ -10,14 +11,15 @@ class DriverViewBody extends StatefulWidget {
 class _DriverViewBodyState extends State<DriverViewBody> {
   Position? _position;
 
-  void _getCurrentLocation() async {
-    Position position = await _determinePosition();
+  void getCurrentLocation() async {
+    Position position = await determinePosition();
+
     setState(() {
       _position = position;
     });
   }
 
-  Future<Position> _determinePosition() async {
+  Future<Position> determinePosition() async {
     LocationPermission permission;
 
     permission = await Geolocator.checkPermission();
@@ -31,22 +33,17 @@ class _DriverViewBodyState extends State<DriverViewBody> {
     return await Geolocator.getCurrentPosition();
   }
 
-  
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: ,
-          // child: _position != null
-          //     ? Text(
-          //         'Current location: \n latitude: ${_position!.latitude.toString()} \n longitude: ${_position!.longitude.toString()}  ')
-          //     : const Text('tap to get your location')
-           ),
-
+          child: _position != null
+              ? Text(
+                  'Current location:\nlatitude: ${_position!.latitude.toString()}\nlongitude: ${_position!.longitude.toString()}  ')
+              : const Text('tap to get your location')),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          _getCurrentLocation();
+          getCurrentLocation();
         },
         tooltip: 'get my location',
         child: const Icon(Icons.location_city),
