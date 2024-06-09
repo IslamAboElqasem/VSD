@@ -1,28 +1,37 @@
 import 'package:flutter/material.dart';
+import 'package:vigilsafedriversystem/Features/Welcome/presentation/views/welcome_view.dart';
 
-Widget userDrawer(BuildContext context) {
+Widget userDrawer(
+    BuildContext context, String firstName, String lastName, String phone) {
   return Drawer(
     child: ListView(
       padding: EdgeInsets.zero,
       children: <Widget>[
-        const DrawerHeader(
-          decoration: BoxDecoration(
+        DrawerHeader(
+          decoration: const BoxDecoration(
             color: Colors.blue,
           ),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
-              CircleAvatar(
+              const CircleAvatar(
                 radius: 40,
                 backgroundImage: AssetImage('assets/avatar_image.png'),
               ),
-              SizedBox(height: 10),
+              const SizedBox(height: 5),
               Text(
-                'User Name',
-                style: TextStyle(
+                '${firstName.toString()} ${lastName.toString()}',
+                style: const TextStyle(
                   color: Colors.white,
-                  fontSize: 20,
+                  fontSize: 18,
                 ),
+              ),
+              Text(
+                phone,
+                style: const TextStyle(
+                    color: Colors.white,
+                    fontSize: 13,
+                    fontWeight: FontWeight.w200),
               ),
             ],
           ),
@@ -37,6 +46,17 @@ Widget userDrawer(BuildContext context) {
           title: const Text('Support'),
           onTap: () {},
         ),
+        ListTile(
+          leading: const Icon(Icons.logout),
+          title: const Text('Log Out'),
+          onTap: () {
+            Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const WelcomeView(),
+                  )
+            );
+          },
       ],
     ),
   );
