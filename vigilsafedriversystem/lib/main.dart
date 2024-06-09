@@ -1,6 +1,8 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:vigilsafedriversystem/Features/Driver/presentation/view_model/cubit/entre_tracker_cubit.dart';
+import 'package:vigilsafedriversystem/Features/Sign_In/presentation/view_model/sign_in_cubit/sign_in_cubit.dart';
 import 'package:vigilsafedriversystem/Features/Sign_Up/presentation/view_model/sign_up_cubit/sign_up_cubit.dart';
 import 'package:vigilsafedriversystem/constant.dart';
 import 'package:vigilsafedriversystem/firebase_options.dart';
@@ -24,6 +26,12 @@ class MyApp extends StatelessWidget {
       providers: [
         BlocProvider(
           create: (context) => SignUpCubit(),
+        ),
+        BlocProvider(
+          create: (context) => SignInCubit(),
+        ),
+        BlocProvider(
+          create: (context) => EntreTrackerCubit(),
         ),
       ],
       child: MaterialApp(
