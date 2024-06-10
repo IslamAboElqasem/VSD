@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:vigilsafedriversystem/Features/Driver/presentation/views/widgets/driver_view_body.dart';
+import 'package:vigilsafedriversystem/Features/Driver/presentation/views/driver_view.dart';
 import 'package:vigilsafedriversystem/core/models/user_model/user_detail.dart';
 import 'package:vigilsafedriversystem/core/widgets/show_toast.dart';
 
 void assertCarPlate(BuildContext context, UserDetails userDetails) {
-  final TextEditingController textFieldController = TextEditingController();
+  final TextEditingController carPlateControler = TextEditingController();
 
   showDialog(
     context: context,
@@ -12,7 +12,7 @@ void assertCarPlate(BuildContext context, UserDetails userDetails) {
       return AlertDialog(
         title: const Text('Enter Car Plate'),
         content: TextField(
-          controller: textFieldController,
+          controller: carPlateControler,
           decoration: const InputDecoration(hintText: "ABC | 1235"),
         ),
         actions: <Widget>[
@@ -25,14 +25,15 @@ void assertCarPlate(BuildContext context, UserDetails userDetails) {
           TextButton(
             child: const Text('OK'),
             onPressed: () {
-              if (textFieldController.text.isEmpty) {
+              if (carPlateControler.text.isEmpty) {
                 showToast(context, 'Car plate cannot be empty', Colors.red);
               } else {
                 // Navigate to DriverViewBody if input is valid
                 Navigator.pushReplacement(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => DriverViewBody(
+                    builder: (context) => DriverView(
+                      carPlate: carPlateControler.text,
                       userDetails: UserDetails(
                           email: userDetails.email,
                           firstName: userDetails.firstName,

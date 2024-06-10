@@ -8,9 +8,11 @@ part 'entre_tracker_state.dart';
 class EntreTrackerCubit extends Cubit<EntreTrackerState> {
   EntreTrackerCubit() : super(EntreTrackerInitial());
 
-  Future sendDriverDataToTracker(DriverInfo driverInfo) async {
+  Future sendDriverDataToTracker(
+      String trackerEmail, DriverInfo driverInfo) async {
     emit(EntreTrackerLoading());
-    if (driverInfo.email == 'heshamislam556@gmail.com') {
+    print('########${trackerEmail.toString()}#########');
+    if (trackerEmail.trim() == 'heshamislam556@gmail.com') {
       FirebaseFirestore.instance
           .collection('DataUsers')
           .doc('yAfsyh7xqiRhdCiluBN8d4eefh43')
@@ -26,7 +28,7 @@ class EntreTrackerCubit extends Cubit<EntreTrackerState> {
         'car_plate': driverInfo.carPlate
       });
       emit(EntreTrackerSuccess());
-    } else if (driverInfo.email == 'islamhesham269@gmail.com') {
+    } else if (trackerEmail.trim() == 'islamhesham269@gmail.com') {
       FirebaseFirestore.instance
           .collection('DataUsers')
           .doc('ew1k3iE0bddrs8JiqAKzeZHY9YD3')
