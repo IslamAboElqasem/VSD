@@ -2,12 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:vigilsafedriversystem/Features/Selection_View/presentation/views/widgets/assert_car_plate.dart';
 import 'package:vigilsafedriversystem/Features/Selection_View/presentation/views/widgets/custom_app_bar.dart';
 import 'package:vigilsafedriversystem/Features/Selection_View/presentation/views/widgets/user_drawer.dart';
+import 'package:vigilsafedriversystem/Features/Tracker/presentation/views/tracker_view.dart';
 import 'package:vigilsafedriversystem/constant.dart';
 import 'package:vigilsafedriversystem/core/models/user_model/user_detail.dart';
 
 class SelectionViewBody extends StatelessWidget {
-  const SelectionViewBody({super.key, required this.userDetails});
+  const SelectionViewBody(
+      {super.key, required this.userDetails, required this.userUid});
   final UserDetails? userDetails;
+  final String? userUid;
 
   @override
   Widget build(BuildContext context) {
@@ -42,7 +45,14 @@ class SelectionViewBody extends StatelessWidget {
                   width: double.infinity,
                   height: 50,
                   child: ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) =>
+                                TrackerView(userUid: userUid!),
+                          ));
+                    },
                     style: ElevatedButton.styleFrom(
                       foregroundColor: Colors.black,
                       backgroundColor: Colors.blue,
@@ -50,7 +60,10 @@ class SelectionViewBody extends StatelessWidget {
                         borderRadius: BorderRadius.all(Radius.circular(20)),
                       ),
                     ),
-                    child: const Text('Tracker'),
+                    child: const Text(
+                      'Tracker',
+                      style: TextStyle(color: Colors.white),
+                    ),
                   ),
                 ),
                 const SizedBox(height: 30),
@@ -75,7 +88,10 @@ class SelectionViewBody extends StatelessWidget {
                         borderRadius: BorderRadius.all(Radius.circular(20)),
                       ),
                     ),
-                    child: const Text('Driver'),
+                    child: const Text(
+                      'Driver',
+                      style: TextStyle(color: Colors.white),
+                    ),
                   ),
                 ),
                 const SizedBox(height: 5),
