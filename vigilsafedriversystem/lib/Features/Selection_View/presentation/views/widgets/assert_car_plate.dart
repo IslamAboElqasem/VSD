@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:vigilsafedriversystem/Features/Driver/presentation/views/widgets/driver_view_body.dart';
+import 'package:vigilsafedriversystem/core/models/user_model/user_detail.dart';
 import 'package:vigilsafedriversystem/core/widgets/show_toast.dart';
 
-void assertCarPlate(BuildContext context) {
+void assertCarPlate(BuildContext context, UserDetails userDetails) {
   final TextEditingController textFieldController = TextEditingController();
 
   showDialog(
@@ -31,7 +32,14 @@ void assertCarPlate(BuildContext context) {
                 Navigator.pushReplacement(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => const DriverViewBody(),
+                    builder: (context) => DriverViewBody(
+                      userDetails: UserDetails(
+                          email: userDetails.email,
+                          firstName: userDetails.firstName,
+                          lastName: userDetails.lastName,
+                          nationalID: userDetails.nationalID,
+                          phoneNumber: userDetails.phoneNumber),
+                    ),
                   ),
                 );
               }

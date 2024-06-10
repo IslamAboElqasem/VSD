@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
+import 'package:vigilsafedriversystem/Features/Driver/presentation/views/widgets/custom_driver_app_bar.dart';
+import 'package:vigilsafedriversystem/core/models/user_model/user_detail.dart';
 
 class DriverViewBody extends StatefulWidget {
-  const DriverViewBody({super.key});
+  const DriverViewBody({super.key, required this.userDetails});
+  final UserDetails? userDetails;
 
   @override
   State<DriverViewBody> createState() => _DriverViewBodyState();
@@ -37,19 +40,22 @@ class _DriverViewBodyState extends State<DriverViewBody> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Stack(children: [
-        Positioned.fill(
-          child: Image.asset(
-            'assets/driverBackGround.jpeg', // Background pattern image
-            opacity: const AlwaysStoppedAnimation(.3),
-            fit: BoxFit.cover,
-            height: double.infinity,
-          ),
+        Image.asset(
+          'assets/driverBackGround.jpeg', // Background pattern image
+          opacity: const AlwaysStoppedAnimation(.3),
+          fit: BoxFit.cover,
+          height: double.infinity,
+          width: double.infinity,
         ),
         Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 25),
+          padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 25),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              const SizedBox(
+                height: 20,
+              ),
+              const CustomDriverAppBar(),
               const SizedBox(height: 100),
               Container(
                 alignment: Alignment.center,

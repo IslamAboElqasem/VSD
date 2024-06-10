@@ -18,15 +18,12 @@ class SelectionViewBody extends StatelessWidget {
           userDetails!.lastName.toString(),
           userDetails!.phoneNumber.toString()),
       body: Stack(children: [
-        SizedBox(
+        Image.asset(
+          'assets/back_ground.jpeg', // Background pattern image
+          opacity: const AlwaysStoppedAnimation(.2),
+          fit: BoxFit.cover,
           height: double.infinity,
-          child: Positioned.fill(
-            child: Image.asset(
-              'assets/back_ground.jpeg', // Background pattern image
-              opacity: const AlwaysStoppedAnimation(.2),
-              fit: BoxFit.cover,
-            ),
-          ),
+          width: double.infinity,
         ),
         SingleChildScrollView(
           child: Padding(
@@ -37,7 +34,7 @@ class SelectionViewBody extends StatelessWidget {
                 const SizedBox(
                   height: 20,
                 ),
-                const CustomAppBar(),
+                const CustomSelectionAppBar(),
                 const SizedBox(
                   height: 100,
                 ),
@@ -62,7 +59,14 @@ class SelectionViewBody extends StatelessWidget {
                   height: 50,
                   child: ElevatedButton(
                     onPressed: () {
-                      assertCarPlate(context);
+                      assertCarPlate(
+                          context,
+                          UserDetails(
+                              email: userDetails!.email,
+                              firstName: userDetails!.firstName,
+                              lastName: userDetails!.lastName,
+                              nationalID: userDetails!.nationalID,
+                              phoneNumber: userDetails!.phoneNumber));
                     },
                     style: ElevatedButton.styleFrom(
                       foregroundColor: Colors.black,
