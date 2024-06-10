@@ -9,8 +9,9 @@ class SignInLoading extends SignInState {}
 
 class SignInSuccess extends SignInState {
   final UserDetails userDetails;
+  final String userUid;
 
-  SignInSuccess({required this.userDetails});
+  SignInSuccess({required this.userUid, required this.userDetails});
 }
 
 class SignInFailure extends SignInState {

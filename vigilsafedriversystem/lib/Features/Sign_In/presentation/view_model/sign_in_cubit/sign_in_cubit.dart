@@ -9,6 +9,7 @@ part 'sign_in_state.dart';
 class SignInCubit extends Cubit<SignInState> {
   SignInCubit() : super(SignInInitial());
   Map userDetails = {};
+  String? userUid;
 
   Future loginWithEmailAndPassword(
     String email,
@@ -17,22 +18,25 @@ class SignInCubit extends Cubit<SignInState> {
     emit(SignInLoading());
     try {
       await FirebaseAuth.instance
-          .signInWithEmailAndPassword(email: email.trim(), password: password);
-      await FirebaseFirestore.instance
-          .collection('DataUsers')
-          .get()
-          .then((collection) {
-        for (var doc in collection.docs) {
+          .signInWithEmailAndPassword(email: email.trim(), password: password)
+          .then((value) async {
+        userUid = value.user!.uid;
+        await FirebaseFirestore.instance
+            .collection('DataUsers')
+            .doc(value.user!.uid)
+            .get()
+            .then((doc) {
           userDetails.addAll({
-            'email': doc.data()['email'],
-            'firstName': doc.data()['first_name'],
-            'lastName': doc.data()['last_name'],
-            'phoneNumber': doc.data()['phone'],
-            'nationalID': doc.data()['national_ID']
+            'email': doc.data()!['email'],
+            'firstName': doc.data()!['first_name'],
+            'lastName': doc.data()!['last_name'],
+            'phoneNumber': doc.data()!['phone'],
+            'nationalID': doc.data()!['national_ID']
           });
-        }
+        });
       });
       emit(SignInSuccess(
+          userUid: userUid!,
           userDetails: UserDetails(
               email: userDetails.values.toList()[0],
               firstName: userDetails.values.toList()[1],
