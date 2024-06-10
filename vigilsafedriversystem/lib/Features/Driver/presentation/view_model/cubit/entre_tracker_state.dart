@@ -11,6 +11,5 @@ final class EntreTrackerSuccess extends EntreTrackerState {}
 
 final class EntreTrackerFailure extends EntreTrackerState {
   final String errorMessage;
-  EntreTrackerFailure({required this.errorMessage})
-
+  EntreTrackerFailure({required this.errorMessage});
 }
