@@ -74,29 +74,7 @@ class _DriverViewBodyState extends State<DriverViewBody> {
                   height: 20,
                 ),
                 const CustomDriverAppBar(),
-                const SizedBox(height: 100),
-                Container(
-                  alignment: Alignment.center,
-                  height: 50,
-                  child: const Text(
-                    'Entre your Tracker ',
-                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25),
-                  ),
-                ),
-                const SizedBox(
-                  height: 15,
-                ),
-                TextFormField(
-                  decoration: const InputDecoration(
-                    labelText: 'Email',
-                    border: OutlineInputBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(10))),
-                  ),
-                  controller: trackerEmail,
-                ),
-                const SizedBox(
-                  height: 15,
-                ),
+                const SizedBox(height: 50),
                 _position != null
                     ? Container(
                         height: 100,
@@ -120,9 +98,53 @@ class _DriverViewBodyState extends State<DriverViewBody> {
                   width: double.infinity,
                   height: 50,
                   child: ElevatedButton(
-                    onPressed: () async {
+                    onPressed: () {
                       getCurrentLocation();
-                      await BlocProvider.of<EntreTrackerCubit>(context)
+                    },
+                    style: ElevatedButton.styleFrom(
+                      foregroundColor: Colors.black,
+                      backgroundColor: Colors.blue,
+                      shape: const RoundedRectangleBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(20)),
+                      ),
+                    ),
+                    child: const Text(
+                      'Get My Location',
+                      style: TextStyle(color: Colors.white),
+                    ),
+                  ),
+                ),
+                const SizedBox(
+                  height: 50,
+                ),
+                Container(
+                  alignment: Alignment.center,
+                  height: 50,
+                  child: const Text(
+                    'Entre your Tracker ',
+                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25),
+                  ),
+                ),
+                const SizedBox(
+                  height: 15,
+                ),
+                TextFormField(
+                  decoration: const InputDecoration(
+                    labelText: 'Email',
+                    border: OutlineInputBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(10))),
+                  ),
+                  controller: trackerEmail,
+                ),
+                const SizedBox(
+                  height: 15,
+                ),
+                SizedBox(
+                  width: double.infinity,
+                  height: 50,
+                  child: ElevatedButton(
+                    onPressed: () {
+                      BlocProvider.of<EntreTrackerCubit>(context)
                           .sendDriverDataToTracker(
                               trackerEmail.text,
                               DriverInfo(
@@ -143,7 +165,7 @@ class _DriverViewBodyState extends State<DriverViewBody> {
                       ),
                     ),
                     child: const Text(
-                      'Get My Location',
+                      'Sent to My Tracker',
                       style: TextStyle(color: Colors.white),
                     ),
                   ),
