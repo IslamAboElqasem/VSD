@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 // import 'package:vigilsafedriversystem/constant.dart';
 
-class CustomAppBar extends StatelessWidget {
-  const CustomAppBar({super.key});
+class CustomSelectionAppBar extends StatelessWidget {
+  const CustomSelectionAppBar({super.key});
 
   @override
   Widget build(BuildContext context) {
