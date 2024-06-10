@@ -62,7 +62,10 @@ class _ForgetPasswordViewBodyState extends State<ForgetPasswordViewBody> {
                     shape: const RoundedRectangleBorder(
                         borderRadius: BorderRadius.all(Radius.circular(20))),
                   ),
-                  child: const Text('Reset Password'),
+                  child: const Text(
+                    'Reset Password',
+                    style: TextStyle(color: Colors.white),
+                  ),
                 ),
               ),
             ],

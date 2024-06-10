@@ -65,112 +65,116 @@ class _DriverViewBodyState extends State<DriverViewBody> {
             height: double.infinity,
             width: double.infinity,
           ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 25),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const SizedBox(
-                  height: 20,
-                ),
-                const CustomDriverAppBar(),
-                const SizedBox(height: 50),
-                _position != null
-                    ? Container(
-                        height: 100,
-                        alignment: Alignment.center,
-                        child: Text(
-                            'Current location:\nlatitude: ${_position!.latitude.toString()}\nlongitude: ${_position!.longitude.toString()}  '),
-                      )
-                    : Container(
-                        height: 100,
-                        alignment: Alignment.center,
-                        child: const Text(
-                          'tap to get your location',
-                          style: TextStyle(
-                              fontSize: 20, fontWeight: FontWeight.bold),
+          SingleChildScrollView(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 25),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  const CustomDriverAppBar(),
+                  const SizedBox(height: 50),
+                  _position != null
+                      ? Container(
+                          height: 100,
+                          alignment: Alignment.center,
+                          child: Text(
+                              'Current location:\nlatitude: ${_position!.latitude.toString()}\nlongitude: ${_position!.longitude.toString()}  '),
+                        )
+                      : Container(
+                          height: 100,
+                          alignment: Alignment.center,
+                          child: const Text(
+                            'tap to get your location',
+                            style: TextStyle(
+                                fontSize: 20, fontWeight: FontWeight.bold),
+                          ),
+                        ),
+                  const SizedBox(
+                    height: 15,
+                  ),
+                  SizedBox(
+                    width: double.infinity,
+                    height: 50,
+                    child: ElevatedButton(
+                      onPressed: () {
+                        getCurrentLocation();
+                      },
+                      style: ElevatedButton.styleFrom(
+                        foregroundColor: Colors.black,
+                        backgroundColor: Colors.blue,
+                        shape: const RoundedRectangleBorder(
+                          borderRadius: BorderRadius.all(Radius.circular(20)),
                         ),
                       ),
-                const SizedBox(
-                  height: 15,
-                ),
-                SizedBox(
-                  width: double.infinity,
-                  height: 50,
-                  child: ElevatedButton(
-                    onPressed: () {
-                      getCurrentLocation();
-                    },
-                    style: ElevatedButton.styleFrom(
-                      foregroundColor: Colors.black,
-                      backgroundColor: Colors.blue,
-                      shape: const RoundedRectangleBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(20)),
+                      child: const Text(
+                        'Get My Location',
+                        style: TextStyle(color: Colors.white),
                       ),
                     ),
+                  ),
+                  const SizedBox(
+                    height: 50,
+                  ),
+                  Container(
+                    alignment: Alignment.center,
+                    height: 50,
                     child: const Text(
-                      'Get My Location',
-                      style: TextStyle(color: Colors.white),
+                      'Entre your Tracker ',
+                      style:
+                          TextStyle(fontWeight: FontWeight.bold, fontSize: 25),
                     ),
                   ),
-                ),
-                const SizedBox(
-                  height: 50,
-                ),
-                Container(
-                  alignment: Alignment.center,
-                  height: 50,
-                  child: const Text(
-                    'Entre your Tracker ',
-                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25),
+                  const SizedBox(
+                    height: 15,
                   ),
-                ),
-                const SizedBox(
-                  height: 15,
-                ),
-                TextFormField(
-                  decoration: const InputDecoration(
-                    labelText: 'Email',
-                    border: OutlineInputBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(10))),
+                  TextFormField(
+                    decoration: const InputDecoration(
+                      labelText: 'Email',
+                      border: OutlineInputBorder(
+                          borderRadius: BorderRadius.all(Radius.circular(10))),
+                    ),
+                    controller: trackerEmail,
                   ),
-                  controller: trackerEmail,
-                ),
-                const SizedBox(
-                  height: 15,
-                ),
-                SizedBox(
-                  width: double.infinity,
-                  height: 50,
-                  child: ElevatedButton(
-                    onPressed: () {
-                      BlocProvider.of<EntreTrackerCubit>(context)
-                          .sendDriverDataToTracker(
-                              trackerEmail.text,
-                              DriverInfo(
-                                  firstname: widget.userDetails!.firstName,
-                                  lastname: widget.userDetails!.lastName,
-                                  driverPhone: widget.userDetails!.phoneNumber,
-                                  carPlate: widget.carPlate,
-                                  latitude: _position?.latitude.toString(),
-                                  longitude: _position?.longitude.toString(),
-                                  email: widget.userDetails!.email));
-                      print('########${trackerEmail.text}#########');
-                    },
-                    style: ElevatedButton.styleFrom(
-                      foregroundColor: Colors.black,
-                      backgroundColor: Colors.blue,
-                      shape: const RoundedRectangleBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(20)),
+                  const SizedBox(
+                    height: 15,
+                  ),
+                  SizedBox(
+                    width: double.infinity,
+                    height: 50,
+                    child: ElevatedButton(
+                      onPressed: () {
+                        BlocProvider.of<EntreTrackerCubit>(context)
+                            .sendDriverDataToTracker(
+                                trackerEmail.text,
+                                DriverInfo(
+                                    firstname: widget.userDetails!.firstName,
+                                    lastname: widget.userDetails!.lastName,
+                                    driverPhone:
+                                        widget.userDetails!.phoneNumber,
+                                    carPlate: widget.carPlate,
+                                    latitude: _position?.latitude.toString(),
+                                    longitude: _position?.longitude.toString(),
+                                    email: widget.userDetails!.email));
+                        print('########${trackerEmail.text}#########');
+                      },
+                      style: ElevatedButton.styleFrom(
+                        foregroundColor: Colors.black,
+                        backgroundColor: Colors.blue,
+                        shape: const RoundedRectangleBorder(
+                          borderRadius: BorderRadius.all(Radius.circular(20)),
+                        ),
+                      ),
+                      child: const Text(
+                        'Sent to My Tracker',
+                        style: TextStyle(color: Colors.white),
                       ),
                     ),
-                    child: const Text(
-                      'Sent to My Tracker',
-                      style: TextStyle(color: Colors.white),
-                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
         ]),

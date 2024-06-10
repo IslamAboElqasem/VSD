@@ -23,6 +23,7 @@ class SignInViewBody extends StatelessWidget {
                 context,
                 MaterialPageRoute(
                     builder: (context) => SelectionView(
+                          userUid: state.userUid,
                           userDetails: UserDetails(
                               email: state.userDetails.email,
                               firstName: state.userDetails.firstName,
@@ -96,7 +97,7 @@ class SignInViewBody extends StatelessWidget {
                             alignment: Alignment.centerRight,
                             child: Text(
                               'Forgot your password?',
-                              style: TextStyle(color: Colors.black),
+                              style: TextStyle(color: Colors.white),
                             ),
                           ),
                         ),
@@ -121,7 +122,10 @@ class SignInViewBody extends StatelessWidget {
                                   borderRadius:
                                       BorderRadius.all(Radius.circular(20))),
                             ),
-                            child: const Text('Sign In'),
+                            child: const Text(
+                              'Sign In',
+                              style: TextStyle(color: Colors.white),
+                            ),
                           ),
                         )
                       ])),

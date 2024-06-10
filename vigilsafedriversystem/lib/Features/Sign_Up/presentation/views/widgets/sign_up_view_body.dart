@@ -216,7 +216,10 @@ class _SignUpViewBodyState extends State<SignUpViewBody> {
                             borderRadius: BorderRadius.all(Radius.circular(20)),
                           ),
                         ),
-                        child: const Text('Sign Up'),
+                        child: const Text(
+                          'Sign Up',
+                          style: TextStyle(color: Colors.white),
+                        ),
                       ),
                     ),
                   ],

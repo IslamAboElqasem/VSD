@@ -36,7 +36,10 @@ class WelcomeViewBody extends StatelessWidget {
                       backgroundColor: Colors.blue,
                       shape: const RoundedRectangleBorder(
                           borderRadius: BorderRadius.all(Radius.circular(20)))),
-                  child: const Text('Sign Up'),
+                  child: const Text(
+                    'Sign Up',
+                    style: TextStyle(color: Colors.white),
+                  ),
                 ),
               ),
               const SizedBox(height: 25),
@@ -57,7 +60,10 @@ class WelcomeViewBody extends StatelessWidget {
                     shape: const RoundedRectangleBorder(
                         borderRadius: BorderRadius.all(Radius.circular(20))),
                   ),
-                  child: const Text('Sign In'),
+                  child: const Text(
+                    'Sign In',
+                    style: TextStyle(color: Colors.white),
+                  ),
                 ),
               ),
             ],
