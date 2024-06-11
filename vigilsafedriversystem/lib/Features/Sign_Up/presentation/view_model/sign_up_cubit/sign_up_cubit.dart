@@ -19,7 +19,7 @@ class SignUpCubit extends Cubit<SignUpState> {
       if (val.user != null) {
         FirebaseFirestore.instance
             .collection('DataUsers')
-            .doc(val.user!.uid)
+            .doc(userDetails.email)
             .set({
           'first_name': userDetails.firstName,
           'last_name': userDetails.lastName,

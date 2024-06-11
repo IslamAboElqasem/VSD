@@ -7,10 +7,8 @@ import 'package:vigilsafedriversystem/constant.dart';
 import 'package:vigilsafedriversystem/core/models/user_model/user_detail.dart';
 
 class SelectionViewBody extends StatelessWidget {
-  const SelectionViewBody(
-      {super.key, required this.userDetails, required this.userUid});
+  const SelectionViewBody({super.key, required this.userDetails});
   final UserDetails? userDetails;
-  final String? userUid;
 
   @override
   Widget build(BuildContext context) {
@@ -49,8 +47,14 @@ class SelectionViewBody extends StatelessWidget {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) =>
-                                TrackerView(userUid: userUid!),
+                            builder: (context) => TrackerView(
+                              userDetails: UserDetails(
+                                  email: userDetails!.email,
+                                  firstName: userDetails!.firstName,
+                                  lastName: userDetails!.lastName,
+                                  nationalID: userDetails!.nationalID,
+                                  phoneNumber: userDetails!.phoneNumber),
+                            ),
                           ));
                     },
                     style: ElevatedButton.styleFrom(

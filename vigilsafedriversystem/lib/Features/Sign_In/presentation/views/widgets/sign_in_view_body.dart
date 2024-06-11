@@ -23,7 +23,6 @@ class SignInViewBody extends StatelessWidget {
                 context,
                 MaterialPageRoute(
                     builder: (context) => SelectionView(
-                          userUid: state.userUid,
                           userDetails: UserDetails(
                               email: state.userDetails.email,
                               firstName: state.userDetails.firstName,
@@ -112,8 +111,6 @@ class SignInViewBody extends StatelessWidget {
                                 _emailController.text,
                                 _passwordController.text,
                               );
-                              print(
-                                  '########${_emailController.text}#########');
                             },
                             style: ElevatedButton.styleFrom(
                               foregroundColor: Colors.black,

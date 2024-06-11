@@ -67,7 +67,7 @@ class _DriverViewBodyState extends State<DriverViewBody> {
           ),
           SingleChildScrollView(
             child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 25),
+              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -158,7 +158,6 @@ class _DriverViewBodyState extends State<DriverViewBody> {
                                     latitude: _position?.latitude.toString(),
                                     longitude: _position?.longitude.toString(),
                                     email: widget.userDetails!.email));
-                        print('########${trackerEmail.text}#########');
                       },
                       style: ElevatedButton.styleFrom(
                         foregroundColor: Colors.black,

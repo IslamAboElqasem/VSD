@@ -9,7 +9,6 @@ part 'sign_in_state.dart';
 class SignInCubit extends Cubit<SignInState> {
   SignInCubit() : super(SignInInitial());
   Map userDetails = {};
-  String? userUid;
 
   Future loginWithEmailAndPassword(
     String email,
@@ -17,13 +16,15 @@ class SignInCubit extends Cubit<SignInState> {
   ) async {
     emit(SignInLoading());
     try {
+      print('entre entre entre entre entre entre entre entre');
       await FirebaseAuth.instance
           .signInWithEmailAndPassword(email: email.trim(), password: password)
           .then((value) async {
-        userUid = value.user!.uid;
+        print(
+            'done done done done done done done done done done done done done done done done done done');
         await FirebaseFirestore.instance
             .collection('DataUsers')
-            .doc(value.user!.uid)
+            .doc(email.trim())
             .get()
             .then((doc) {
           userDetails.addAll({
@@ -36,14 +37,13 @@ class SignInCubit extends Cubit<SignInState> {
         });
       });
       emit(SignInSuccess(
-          userUid: userUid!,
           userDetails: UserDetails(
               email: userDetails.values.toList()[0],
               firstName: userDetails.values.toList()[1],
               lastName: userDetails.values.toList()[2],
               nationalID: userDetails.values.toList()[4],
               phoneNumber: userDetails.values.toList()[3])));
-    } on Exception catch (e) {
+    } catch (e) {
       emit(SignInFailure(errorMessage: e.toString()));
     }
   }

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:vigilsafedriversystem/core/models/user_model/driver_info.dart';
 
-void ShowRequestDetails(BuildContext context, DriverInfo driverInfo) {
+void showRequestDetails(BuildContext context, DriverInfo driverInfo) {
   showDialog(
     context: context,
     builder: (BuildContext context) {
@@ -12,7 +12,7 @@ void ShowRequestDetails(BuildContext context, DriverInfo driverInfo) {
           children: [
             Text(driverInfo.firstname.toString() +
                 driverInfo.lastname.toString()),
-            Text(driverInfo!.driverPhone.toString()),
+            Text(driverInfo.driverPhone.toString()),
             Text(
                 'Car Plate: ${driverInfo.carPlate.toString()}\nLatitude: ${driverInfo.latitude.toString()}\nLongitude: ${driverInfo.longitude.toString()}'),
           ],

@@ -11,11 +11,10 @@ class EntreTrackerCubit extends Cubit<EntreTrackerState> {
   Future sendDriverDataToTracker(
       String trackerEmail, DriverInfo driverInfo) async {
     emit(EntreTrackerLoading());
-    print('########${trackerEmail.toString()}#########');
-    if (trackerEmail.trim() == 'heshamislam556@gmail.com') {
+    try {
       FirebaseFirestore.instance
           .collection('DataUsers')
-          .doc('yAfsyh7xqiRhdCiluBN8d4eefh43')
+          .doc(trackerEmail.trim())
           .collection('Requests')
           .doc()
           .set({
@@ -27,25 +26,9 @@ class EntreTrackerCubit extends Cubit<EntreTrackerState> {
         'latitude': driverInfo.latitude,
         'car_plate': driverInfo.carPlate
       });
-      emit(EntreTrackerSuccess());
-    } else if (trackerEmail.trim() == 'islamhesham269@gmail.com') {
-      FirebaseFirestore.instance
-          .collection('DataUsers')
-          .doc('ew1k3iE0bddrs8JiqAKzeZHY9YD3')
-          .collection('Requests')
-          .doc()
-          .set({
-        'first_name': driverInfo.firstname,
-        'last_name': driverInfo.lastname,
-        'email': driverInfo.email,
-        'phone': driverInfo.driverPhone,
-        'longitude': driverInfo.longitude,
-        'latitude': driverInfo.latitude,
-        'car_plate': driverInfo.carPlate
-      });
-      emit(EntreTrackerSuccess());
-    } else {
-      emit(EntreTrackerFailure(errorMessage: 'this email not found '));
+      emit(EntreTrackerLoading());
+    } on Exception catch (e) {
+      emit(EntreTrackerFailure(errorMessage: e.toString()));
     }
   }
 }
